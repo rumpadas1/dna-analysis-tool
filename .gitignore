@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+env/
+ENV/
+
+# Logs
+*.log
+
+# Python build
+build/
+dist/
+*.egg-info/
+
+# Node modules & frontend build
+node_modules/
+.next/
+out/
+
+# Editor/IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Env
+.env
