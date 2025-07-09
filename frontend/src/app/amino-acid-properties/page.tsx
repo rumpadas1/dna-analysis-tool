@@ -24,7 +24,7 @@ export default function AminoAcidProperties() {
     setChartData(null);
 
     try {
-      const response = await fetch('http://localhost:8000/amino-acid-properties/', {
+      const response = await fetch('https://dna-analysis-tool.onrender.com/amino-acid-properties/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
