@@ -20,7 +20,7 @@ export default function ProteinSolubility() {
     setSolubility(null);
 
     try {
-      const response = await fetch('http://localhost:8000/protein-solubility/', {
+      const response = await fetch('https://dna-analysis-tool.onrender.com/protein-solubility/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sequence })
