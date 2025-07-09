@@ -21,7 +21,7 @@ export default function DiseasePrediction() {
     setMatchedDiseases([]);
 
     try {
-      const res = await fetch('http://localhost:8000/disease-prediction', {
+      const res = await fetch('https://dna-analysis-tool.onrender.com/disease-prediction', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
