@@ -34,7 +34,7 @@ export default function MutationDetectionPage() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/mutation-detection/", {
+      const res = await fetch("https://dna-analysis-tool.onrender.com/mutation-detection/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ reference, sample }),
