@@ -118,19 +118,21 @@ export default function MutationDetectionPage() {
               <div className="mt-10">
                 <h3 className="text-pink-300 font-semibold text-center mb-3">Mutation Position Chart</h3>
                 <div style={{ maxHeight: "300px" }}>
-                  <Bar
-                    data={chartData}
-                    options={{
-                      responsive: true,
-                      plugins: {
-                        legend: { labels: { color: "white" } },
-                      },
-                      scales: {
-                        x: { ticks: { color: "white" } },
-                        y: { ticks: { color: "white" } },
-                      },
-                    }}
-                  />
+                  {chartData && (
+                    <Bar
+                      data={chartData}
+                      options={{
+                        responsive: true,
+                        plugins: {
+                          legend: { labels: { color: "white" } },
+                        },
+                        scales: {
+                          x: { ticks: { color: "white" } },
+                          y: { ticks: { color: "white" } },
+                        },
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>
