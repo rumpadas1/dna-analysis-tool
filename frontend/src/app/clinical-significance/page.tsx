@@ -12,7 +12,7 @@ export default function ClinicalSignificance() {
     setResults({});
 
     try {
-      const res = await fetch('http://localhost:8000/clinical-significance', {
+      const res = await fetch('https://dna-analysis-tool.onrender.com/clinical-significance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sequence }),
