@@ -12,7 +12,7 @@ export default function SequenceTranslationPage() {
     setError('');
 
     try {
-      const res = await fetch('http://127.0.0.1:8000/sequence-translation/', {
+      const res = await fetch('https://dna-analysis-tool.onrender.com/sequence-translation/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
