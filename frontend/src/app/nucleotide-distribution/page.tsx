@@ -25,7 +25,7 @@ export default function NucleotideDistributionPage() {
     setResult(null);
 
     try {
-      const res = await fetch("http://localhost:8000/nucleotide-distribution/", {
+      const res = await fetch("https://dna-analysis-tool.onrender.com/nucleotide-distribution/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sequence }),
