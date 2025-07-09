@@ -1,4 +1,3 @@
-// src/components/DNAInputForm.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -7,9 +6,21 @@ interface DNAInputFormProps {
   toolName: string;
   onSubmit: (sample: string, reference?: string) => void;
   showReferenceInput?: boolean;
+  submitButtonText?: string;
+  submitButtonClass?: string;
+  inputBorderColor?: string;
+  inputFocusRing?: string;
 }
 
-export default function DNAInputForm({ toolName, onSubmit, showReferenceInput = false }: DNAInputFormProps) {
+export default function DNAInputForm({
+  toolName,
+  onSubmit,
+  showReferenceInput = false,
+  submitButtonText = "Submit",
+  submitButtonClass = "bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-700",
+  inputBorderColor = "border-gray-500",
+  inputFocusRing = "focus:ring-indigo-500"
+}: DNAInputFormProps) {
   const [sample, setSample] = useState('');
   const [reference, setReference] = useState('');
   const [file, setFile] = useState<File | null>(null);
@@ -78,7 +89,7 @@ export default function DNAInputForm({ toolName, onSubmit, showReferenceInput = 
           value={reference}
           onChange={handleReferenceChange}
           placeholder="Enter reference DNA sequence"
-          className="w-full p-2 border rounded bg-gray-800 text-white"
+          className={`w-full p-2 border ${inputBorderColor} rounded bg-gray-800 text-white ${inputFocusRing}`}
           rows={4}
         />
       )}
@@ -87,19 +98,24 @@ export default function DNAInputForm({ toolName, onSubmit, showReferenceInput = 
         value={sample}
         onChange={handleSampleChange}
         placeholder={showReferenceInput ? "Enter sample DNA sequence" : "Paste your DNA sequence here (A, T, G, C, U)"}
-        className="w-full p-2 border rounded bg-gray-800 text-white"
+        className={`w-full p-2 border ${inputBorderColor} rounded bg-gray-800 text-white ${inputFocusRing}`}
         rows={5}
       />
 
-      
+      <input
+        type="file"
+        accept=".txt,.csv"
+        onChange={handleFileChange}
+        className="block w-full text-sm text-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-500"
+      />
 
       {error && <p className="text-red-500">{error}</p>}
 
       <button
         type="submit"
-        className="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-700"
+        className={submitButtonClass}
       >
-        Submit
+        {submitButtonText}
       </button>
     </form>
   );
