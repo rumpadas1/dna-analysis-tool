@@ -39,18 +39,21 @@ export default function GcContentPage() {
     }
   };
 
-  const chartData = result && {
-    labels: ["GC Content", "AT Content"],
-    datasets: [
-      {
-        label: "Base Pair Composition",
-        data: [result.gc_count, result.length - result.gc_count],
-        backgroundColor: ["#ec4899", "#6a0572"], // pink + purple
-        borderColor: ["#ec4899", "#6a0572"],
-        borderWidth: 1,
-      },
-    ],
-  };
+  const chartData =
+    result !== null
+      ? {
+          labels: ["GC Content", "AT Content"],
+          datasets: [
+            {
+              label: "Base Pair Composition",
+              data: [result.gc_count, result.length - result.gc_count],
+              backgroundColor: ["#ec4899", "#6a0572"],
+              borderColor: ["#ec4899", "#6a0572"],
+              borderWidth: 1,
+            },
+          ],
+        }
+      : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white py-20 px-6">
@@ -85,14 +88,16 @@ export default function GcContentPage() {
               <p><span className="font-semibold text-pink-400">Total Length:</span> {result.length}</p>
             </div>
 
-            <div className="mt-10 flex justify-center">
-              <div className="p-4 bg-black/20 rounded-xl border border-pink-700 shadow">
-                <h3 className="text-pink-300 font-semibold text-center mb-3">GC vs AT Distribution</h3>
-                <div style={{ width: "250px", height: "250px" }}>
-                  <Pie data={chartData} options={{ maintainAspectRatio: false }} />
+            {chartData && (
+              <div className="mt-10 flex justify-center">
+                <div className="p-4 bg-black/20 rounded-xl border border-pink-700 shadow">
+                  <h3 className="text-pink-300 font-semibold text-center mb-3">GC vs AT Distribution</h3>
+                  <div style={{ width: "250px", height: "250px" }}>
+                    <Pie data={chartData} options={{ maintainAspectRatio: false }} />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
