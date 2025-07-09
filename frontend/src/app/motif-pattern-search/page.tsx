@@ -38,18 +38,21 @@ export default function MotifPatternSearchPage() {
     }
   };
 
-  const chartData = result && {
-    labels: result.matches.map((pos) => `Pos ${pos}`),
-    datasets: [
-      {
-        label: `Pattern "${result.pattern}" Occurrences`,
-        data: result.matches.map(() => 1),
-        backgroundColor: "#f472b6", // pink-400
-        borderColor: "#be185d",     // pink-800
-        borderWidth: 1,
-      },
-    ],
-  };
+  const chartData =
+    result !== null
+      ? {
+          labels: result.matches.map((pos) => `Pos ${pos}`),
+          datasets: [
+            {
+              label: `Pattern "${result.pattern}" Occurrences`,
+              data: result.matches.map(() => 1),
+              backgroundColor: "#f472b6",
+              borderColor: "#be185d",
+              borderWidth: 1,
+            },
+          ],
+        }
+      : null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white py-20 px-6">
@@ -92,23 +95,28 @@ export default function MotifPatternSearchPage() {
               <p><span className="font-semibold text-pink-400">Match Positions:</span> {result.matches.join(", ")}</p>
             </div>
 
-            <div className="mt-10 flex justify-center">
-              <div className="p-4 bg-black/20 rounded-xl border border-pink-700 shadow w-full max-w-2xl">
-                <h3 className="text-pink-300 font-semibold text-center mb-3">Pattern Match Positions</h3>
-                <Bar data={chartData} options={{
-                  responsive: true,
-                  plugins: {
-                    legend: {
-                      labels: { color: "white" }
-                    }
-                  },
-                  scales: {
-                    x: { ticks: { color: "white" }},
-                    y: { ticks: { color: "white" }}
-                  }
-                }} />
+            {chartData && (
+              <div className="mt-10 flex justify-center">
+                <div className="p-4 bg-black/20 rounded-xl border border-pink-700 shadow w-full max-w-2xl">
+                  <h3 className="text-pink-300 font-semibold text-center mb-3">Pattern Match Positions</h3>
+                  <Bar
+                    data={chartData}
+                    options={{
+                      responsive: true,
+                      plugins: {
+                        legend: {
+                          labels: { color: "white" }
+                        }
+                      },
+                      scales: {
+                        x: { ticks: { color: "white" }},
+                        y: { ticks: { color: "white" }}
+                      }
+                    }}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
