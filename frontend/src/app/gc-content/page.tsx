@@ -24,7 +24,7 @@ export default function GcContentPage() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8000/gc-content/", {
+      const res = await fetch("https://dna-analysis-tool.onrender.com/gc-content/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sequence }),
