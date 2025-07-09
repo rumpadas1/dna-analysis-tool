@@ -23,7 +23,7 @@ export default function MotifPatternSearchPage() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8000/motif-pattern-search/", {
+      const res = await fetch("https://dna-analysis-tool.onrender.com/motif-pattern-search/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sequence, pattern }),
